@@ -1,8 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Button,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
 
 export default function App() {
-  console.log("not good for develop");
+  console.log("platform", Platform);
   return (
     // <View style={styles.container}>
     //   <Image
@@ -17,13 +25,14 @@ export default function App() {
       />
       <Text style={styles.landingText}>Banking That Suits Your</Text>
       <Text style={styles.christmasFontText}>LifeStyle</Text>
-      <Button
-        style={styles.landingButton}
-        title="Continue"
-        color="#20345E"
-        backgroundColor="#20345E"
-        onPress={() => alert("presseds")}
-      />
+      <TouchableOpacity style={styles.landingButton}>
+        <Button
+          title="Continue"
+          color="#fff"
+          backgroundColor="#20345E"
+          onPress={() => alert("presseds")}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -34,9 +43,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#20345E",
     alignItems: "center",
     justifyContent: "center",
+    // display: Platform.OS === "android" ? "none" : "block"
   },
   landingPageContainer: {
-    backgroundColor: "#FFF",
+    backgroundColor: "#fff",
+    paddingHorizontal: "3%",
+    paddingVertical: "15%",
   },
   landingImage: {
     width: "100%",
@@ -45,6 +57,8 @@ const styles = StyleSheet.create({
     width: "100%",
     border: "1px solid black",
     backgroundColor: "#20345E",
+    borderRadius: "8px",
+    paddingVertical: "2%",
   },
   landingText: {
     fontWeight: "bold",
